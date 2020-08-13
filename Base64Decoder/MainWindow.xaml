@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Base64Decoder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Base64 Decode/Encode" Height="150" Width="800" MinWidth="200" MinHeight="150" SizeToContent="WidthAndHeight">
+    <Grid Margin="30">
+        <TextBox x:Name="Base64Data" HorizontalAlignment="Left" Text="Base64" VerticalAlignment="Top" Width="733" TextChanged="Base64Data_TextChanged"/>
+        <TextBox x:Name="PlainTextData" HorizontalAlignment="Left" Text="Plain Text" VerticalAlignment="Bottom" Width="733" TextChanged="PlainTextData_TextChanged"/>
+
     </Grid>
 </Window>
