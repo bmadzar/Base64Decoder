@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Base64Decoder
 {
@@ -20,11 +10,11 @@ namespace Base64Decoder
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Encoding encoding;
+        private readonly Encoding encoding;
 
         public MainWindow()
         {
-            encoding = System.Text.Encoding.GetEncoding(1252);
+            encoding = Encoding.GetEncoding(1252);
             InitializeComponent();
         }
 
@@ -36,7 +26,7 @@ namespace Base64Decoder
             }
 
             byte[] bytes = encoding.GetBytes(plainText);
-            return System.Convert.ToBase64String(bytes);
+            return Convert.ToBase64String(bytes);
         }
 
         private string Base64Decode(string base64)
@@ -46,11 +36,11 @@ namespace Base64Decoder
                 return "";
             }
 
-            base64 = base64.PadRight(4 - (base64.Length % 4), '=');
+            base64 = base64.PadRight(base64.Length + (4 - (base64.Length % 4)), '=');
 
             try
             {
-                byte[] bytes = System.Convert.FromBase64String(base64);
+                byte[] bytes = Convert.FromBase64String(base64);
                 return encoding.GetString(bytes);
             }
             catch (FormatException)
@@ -77,6 +67,12 @@ namespace Base64Decoder
             {
                 PlainTextData.Text = Base64Decode(textBox.Text);
             }
+        }
+
+        private void Base64DataPaste_Click(object sender, RoutedEventArgs e)
+        {
+            Base64Data.Focus();
+            Base64Data.Text = Clipboard.GetText(TextDataFormat.Text);
         }
     }
 }

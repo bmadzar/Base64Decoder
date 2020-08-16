@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Base64Decoder"
         mc:Ignorable="d"
-        Title="Base64 Decode/Encode" Height="150" Width="800" MinWidth="200" MinHeight="150" SizeToContent="WidthAndHeight">
-    <Grid Margin="30">
-        <TextBox x:Name="Base64Data" HorizontalAlignment="Left" Text="Base64" VerticalAlignment="Top" Width="733" TextChanged="Base64Data_TextChanged"/>
-        <TextBox x:Name="PlainTextData" HorizontalAlignment="Left" Text="Plain Text" VerticalAlignment="Bottom" Width="733" TextChanged="PlainTextData_TextChanged"/>
+        Title="Base64 Decode/Encode" MinWidth="300" MinHeight="160" SizeToContent="WidthAndHeight" MaxHeight="160">
+    <StackPanel Margin="20,10,20,20">
+        <Label x:Name="Base64DataLabel" Content="_Base64 Data" Padding="0,5" Target="{Binding ElementName=Base64Data, Mode=OneWay}"/>
+        <DockPanel FlowDirection="RightToLeft">
+            <Button x:Name="Base64DataPaste" Content="Paste" Padding="5,1" Click="Base64DataPaste_Click"/>
+            <TextBox x:Name="Base64Data" TextChanged="Base64Data_TextChanged" FlowDirection="LeftToRight" Height="20" MaxHeight="20"/>       
+        </DockPanel>
+        <Label x:Name="PlainTextDataLabel" Content="_Plain Text Data" Padding="0,5" Target="{Binding ElementName=PlainTextData, Mode=OneWay}"/>
+        <TextBox x:Name="PlainTextData" TextChanged="PlainTextData_TextChanged" Height="20" MaxHeight="20"/>
 
-    </Grid>
+    </StackPanel>
 </Window>
