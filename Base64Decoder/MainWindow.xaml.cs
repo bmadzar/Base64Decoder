@@ -36,7 +36,7 @@ namespace Base64Decoder
                 return "";
             }
 
-            base64 = base64.PadRight(base64.Length + (4 - (base64.Length % 4)), '=');
+            base64 = base64.PadRight((base64.Length + 3) / 4, '=');
 
             try
             {
